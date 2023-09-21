@@ -3,12 +3,11 @@ import os
 from pandas import json_normalize
 import pandas
 import requests
-from sklearn.preprocessing import MinMaxScaler
-from sklearn.cluster import KMeans
+#from sklearn.preprocessing import MinMaxScaler
+#from sklearn.cluster import KMeans
 import time
 
-def getUserJson():
-    file_path = "Ranking_Sol.json"
+def getUserJson(file_path):
     print(os.listdir(os.getcwd()))
     userNumArr = []
     with open(file_path,'r',encoding='UTF8') as file:
@@ -17,14 +16,22 @@ def getUserJson():
         #userNumArr.append((js["userNum"],js["nickname"]))
         userNumArr.append(js["userNum"])
     return userNumArr
-arr = getUserJson()
 
+
+data_path = 'data/'
+input_path = data_path + 'Ranking_Sol.json'
+arr = getUserJson(input_path)
+
+api_read = open(data_path + 'api.txt', 'r')
+api = api_read.readline()
 
 headers = {
     'accept': 'application/json',
-    'x-api-key': 'GfWsaQabFx841lpntCkbG16ym46BFY019ck8GrEv',
+    'x-api-key': api,
     'encoding': 'UTF-8',
 }
+
+
 
 #response = requests.options('https://open-api.bser.io/v1/user/games/308142', headers=headers)
 

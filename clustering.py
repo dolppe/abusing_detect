@@ -27,14 +27,6 @@ result_by_sklearn.head()
 
 
 
-
-
-
-
-
-
-
-
 sns.scatterplot(x="x", y="y", data=points, palette="Set2")
 
 centroids = points.sample(4, random_state=1)
